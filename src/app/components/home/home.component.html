@@ -1,0 +1,7 @@
+<main>
+  <p class="title">Всі Фільми</p>
+  <div class="filter"><input type="text"></div>
+  <div class="list_wrapper">
+    <app-item *ngFor="let i of movies" [item]="i"></app-item>
+  </div>
+</main>

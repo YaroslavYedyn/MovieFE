@@ -1,0 +1,34 @@
+header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #15384c;
+}
+
+.logo {
+  font-size: 40px;
+}
+
+.logo a {
+  color: red;
+}
+
+.nav {
+  text-transform: uppercase;
+  width: 40%;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth {
+  text-transform: uppercase;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+}
