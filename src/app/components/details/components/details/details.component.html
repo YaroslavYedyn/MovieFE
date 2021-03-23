@@ -1,5 +1,14 @@
-<div class="details" [ngStyle]="{
-      'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url('+headerBGUrl+')'
-      }">
+<div *ngIf="movie">
+  <div
+    [ngStyle]="{'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('+headerBGUrl+')'}"
 
+    class="details">
+    <!--    <img [src]="headerBGUrl" alt="">-->
+    <video [poster]="headerBGUrl" width="480" controls>
+      <source [src]="baseUrl+movie.video" type="video/mp4">
+    </video>
+
+    <h1>{{movie.title}}</h1>
+  </div>
 </div>
+<!--    [style.background-image]="'url(' + headerBGUrl + ')'"-->

@@ -28,7 +28,4 @@ header {
 
 .auth {
   text-transform: uppercase;
-  width: 10%;
-  display: flex;
-  justify-content: center;
 }

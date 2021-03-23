@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IMovie} from '../models/IMovie';
-import {IUser} from '../models/IUser';
 import {IResponse} from '../models/IResponse';
 
 
@@ -28,8 +27,4 @@ export class MovieService {
     return this.httpClient.get<IMovie>(`${this.URL}${endpoint.movie}${id}`);
   }
 
-  createUser(user): Observable<IUser> {
-    console.log(user);
-    return this.httpClient.post<IUser>(`${this.URL}${endpoint.users}`, user);
-  }
 }

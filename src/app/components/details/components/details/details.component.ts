@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {MovieService} from '../../../../services/movie.service';
 import {IdModel} from '../../models/IdModel';
 import {IMovie} from '../../../../models/IMovie';
+// @ts-ignore
+import backdrop from '../../../../image/backdrop.jpg';
 
 @Component({
   selector: 'app-details',
@@ -13,6 +15,7 @@ export class DetailsComponent implements OnInit {
   id: IdModel;
   movie: IMovie;
   headerBGUrl: string;
+  baseUrl = 'http://localhost:5050/';
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -23,11 +26,11 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.movieService.getMovieByID(this.id).subscribe(value => {
+    this.movieService.getMovieByID(this.id ? this.id : JSON.parse(localStorage.getItem('id'))).subscribe(value => {
       this.movie = value;
       this.movie.backdrop_path ?
-        this.headerBGUrl = 'https://image.tmdb.org/t/p/original' + this.movie.backdrop_path :
-        this.headerBGUrl = 'addad';
+        this.headerBGUrl = this.baseUrl + this.movie.backdrop_path :
+        this.headerBGUrl = backdrop;
     });
   }
 

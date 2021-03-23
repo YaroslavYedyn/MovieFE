@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ItemComponent implements OnInit {
   @Input()
   item: IMovie;
-  baseUrlImg = 'https://image.tmdb.org/t/p/original';
+  baseUrlImg = 'http://localhost:5050/';
 
   constructor(private  router: Router, private activatedRoute: ActivatedRoute) {
   }
