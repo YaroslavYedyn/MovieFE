@@ -1,0 +1,20 @@
+.check{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 28px;
+  background: #15384c;
+  color: white;
+}
+.gmail_link{
+  text-decoration: none;
+  outline: none;
+  color: #e30000;
+  padding: 2px;
+}
+.gmail_link:hover{
+  color: cadetblue;
+}

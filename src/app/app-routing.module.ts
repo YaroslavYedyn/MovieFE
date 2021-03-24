@@ -6,7 +6,8 @@ import {HomeComponent} from './components/home/home.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'auth', loadChildren: () => import('./components/auth/auth.module').then((m) => m.AuthModule)},
-  {path: 'details/:id', loadChildren: () => import('./components/details/details.module').then((m) => m.DetailsModule)}
+  {path: 'details/:id', loadChildren: () => import('./components/details/details.module').then((m) => m. DetailsModule)},
+  {path: 'error', loadChildren: () => import('./components/error/error.module').then((m) => m.ErrorModule)}
 ];
 
 @NgModule({
