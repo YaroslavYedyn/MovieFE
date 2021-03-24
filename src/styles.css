@@ -5,9 +5,11 @@
 }
 
 body {
-  background: #172935;
+  background: #1a143a;
   color: #fff;
   font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 /*NORMALIZE*/
@@ -24,9 +26,6 @@ html {
  * Remove the margin in all browsers.
  */
 
-body {
-  margin: 0;
-}
 
 /**
  * Render the `main` element consistently in IE.
@@ -79,6 +78,11 @@ pre {
 
 a {
   background-color: transparent;
+  text-decoration: none;
+}
+
+*:any-link {
+  color: #ffffff;
 }
 
 /**

@@ -19,9 +19,7 @@ export class ActivateComponent implements OnInit {
     this.userService.activateAccount(this.token).subscribe(value => {
       this.router.navigate(['auth/login']);
     }, error => {
-      this.router.navigate(['error'], {
-        state: error
-      });
+      this.router.navigate(['error']);
     });
   }
 

@@ -1,6 +1,22 @@
 <main>
   <p class="title">Всі Фільми</p>
-  <div class="filter"><input type="text"></div>
+  <div class="filter">
+    <div>
+      <select name="genre" id="genre">
+        <option>Бойовики</option>
+        <option>Драма</option>
+        <option>Комедія</option>
+        <option>Екшен</option>
+      </select>
+      <select name="year" id="year">
+        <option>2021</option>
+        <option>2020</option>
+        <option>2019</option>
+        <option>2018</option>
+      </select>
+    </div>
+    <input type="text">
+  </div>
   <div class="list_wrapper">
     <app-item *ngFor="let i of movies" [item]="i"></app-item>
   </div>

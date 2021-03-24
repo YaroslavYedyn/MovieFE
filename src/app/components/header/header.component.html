@@ -1,12 +1,14 @@
 <header>
-  <div [classList]="['logo']">MY<a>MOVIES</a>APP</div>
-  <div class="nav">
-    <ul>
-      <a routerLink="">фільми</a>
-      <a>премєри</a>
-      <a>серіали</a>
-      <a>мультфільми</a>
-    </ul>
+  <div [classList]="['logo']">
+    <div class="right-logo">
+      <div class="text">1film</div>
+    </div>
   </div>
-  <div class="auth" routerLink="/auth">вхід</div>
+  <ul class="nav">
+    <li routerLink="">фільми</li>
+    <li routerLink="login">премєри</li>
+    <li>серіали</li>
+    <li>мультфільми</li>
+  </ul>
+  <div class="auth" [routerLink]="['auth']"  >вхід</div>
 </header>

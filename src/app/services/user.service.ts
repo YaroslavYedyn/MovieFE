@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {IUser} from '../models/IUser';
+import {IUser} from '../models';
 import {HttpClient} from '@angular/common/http';
 
 const enum endpoint {
   movie = 'movies/',
   users = 'users/',
-  activate = 'email/activate'
+  auth = 'auth',
+  activate = 'email/activate',
 }
 
 @Injectable({

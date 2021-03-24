@@ -1,1 +1,11 @@
-<p>login works!</p>
+<div class="login">
+
+  <div class="wrapper">
+    <p class="title">Авторизація</p>
+    <form [formGroup]="form" action="http://localhost:5050/auth" method="post" class="form" (ngSubmit)=login()>
+      <input [formControl]="email" class="email" type="text" placeholder="Please enter email">
+      <input [formControl]="password" class="password" type="password" placeholder="Please enter password">
+      <input class="login-btn" type="submit" value="Вхід">
+    </form>
+  </div>
+</div>
