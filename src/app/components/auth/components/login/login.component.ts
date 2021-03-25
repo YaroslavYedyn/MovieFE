@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {IToken} from '../../../../models';
+import {ILogin, IToken} from '../../../../models';
 import {AuthService} from '../../../../services';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {AuthService} from '../../../../services';
 })
 export class LoginComponent implements OnInit {
   error: any;
-  auth: {};
+  auth: ILogin;
   token: IToken;
   password = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required]);
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
     email: this.email,
   });
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,15 +28,9 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.auth = {password: this.password.value, email: this.email.value};
-    this.authService.login(this.auth).subscribe(value => {
-      this.token = value;
-      localStorage.setItem('access_token', value.access_token);
-      localStorage.setItem('refresh_token', value.refresh_token);
-    }, error => {
-      this.error = error;
-      console.log(error);
-    });
+    this.authService.login(this.auth).subscribe(() => {
+      this.router.navigate(['']);
+    }, error1 => this.error = error1.error);
 
-    console.log(this.token);
   }
 }

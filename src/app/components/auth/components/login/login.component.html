@@ -6,6 +6,7 @@
       <input [formControl]="email" class="email" type="text" placeholder="Please enter email">
       <input [formControl]="password" class="password" type="password" placeholder="Please enter password">
       <input class="login-btn" type="submit" value="Вхід">
+      <div *ngIf="error">{{error|json}}</div>
     </form>
   </div>
 </div>
