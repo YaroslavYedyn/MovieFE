@@ -3,4 +3,5 @@ export interface IUser {
   password: string;
   email: string;
   avatar: string;
+  wishlist: [];
 }

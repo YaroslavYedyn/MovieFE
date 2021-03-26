@@ -1,0 +1,66 @@
+.email-setting {
+  width: 80%;
+  min-height: 100vh;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.mail-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.mail-form label {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.email-setting p {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+
+.text textarea {
+  padding: 5px;
+  margin-top: 10px;
+  width: 400px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  outline: none;
+}
+
+.text{
+  margin-top: 20px;
+}
+.topic {
+  width: 400px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.email-btn {
+  width: 200px;
+  font-size: 16px;
+  font-weight: 700;
+  height: 40px;
+  margin-top: 30px;
+  border-radius: 5px;
+  border: none;
+}
+
+.email-btn:hover {
+  opacity: 0.7;
+}
+.check-all-user input{
+  width: 20px;
+  height: 20px;
+}

@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {IMovie} from '../models/IMovie';
-import {IResponse} from '../models/IResponse';
+import {IResponse, IMovie} from '../models';
 
 
 const enum endpoint {

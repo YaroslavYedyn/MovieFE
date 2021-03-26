@@ -15,8 +15,8 @@ export class HeaderComponent implements OnInit {
   baseUrlImg = 'http://localhost:5050/';
 
 
-  constructor(private authService: AuthService,
-              private roleService: RoleGuardService,
+  constructor(public authService: AuthService,
+              public roleService: RoleGuardService,
               private router: Router) {
   }
 

@@ -7,6 +7,7 @@ const enum endpoint {
   users = 'users',
   auth = 'auth',
   activate = 'email/activate',
+  send_mail = 'email/send',
 }
 
 @Injectable({
@@ -27,7 +28,7 @@ export class UserService {
     return localStorage.getItem('user_id');
   }
 
-  getUser(query): Observable<IAllUser> {
+  getUsers(query): Observable<IAllUser> {
     return this.httpClient.get<IAllUser>(`${this.URL}${endpoint.users}`, {params: query});
   }
 
@@ -47,5 +48,9 @@ export class UserService {
 
   updateUser(query, updateBody): Observable<void> {
     return this.httpClient.put<void>(`${this.URL}${endpoint.users}`, updateBody, {params: query});
+  }
+
+  sendMail(message, users): Observable<void> {
+    return this.httpClient.post<void>(`${this.URL}${endpoint.send_mail}`, {...message, users});
   }
 }

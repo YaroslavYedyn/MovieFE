@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {IUser} from '../../../../models/IUser';
-import {MovieService} from '../../../../services/movie.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from '../../../../services/user.service';
+
+import {IUser} from '../../../../models';
+import {UserService} from '../../../../services';
 
 // import errorMessage from '../../../../constants/error.messages';
 
@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
   }
 
   auth(): void {
-    this.users = {username: this.username.value, password: this.password.value, email: this.email.value};
+    this.users = {username: this.username.value, password: this.password.value, email: this.email.value, avatar: '', wishlist: []};
     const status = this.userService.createAccount(this.users).subscribe(value => {
       this.router.navigate(['check'], {
         relativeTo: this.activatedRoute,

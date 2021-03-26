@@ -1,24 +1,26 @@
-.account {
+.admin {
   margin: 0 auto;
   width: 80%;
-  min-height: 160px;
+  min-height: 150px;
   height: 160px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   text-align: center;
   background-position: top center;
   background-size: cover;
-  padding: 50px 50px 0 50px;
+  padding: 50px 50px 30px 50px;
 }
 
 .functional {
   width: 100%;
   display: flex;
+  align-items: center;
+  height: 160px;
 }
 
-.account-item {
+.admin-item {
   width: 150px;
   height: 150px;
   background: #f8104d;
@@ -33,7 +35,7 @@
   cursor: pointer;
 }
 
-.account-item:hover {
+.admin-item:hover {
   opacity: 0.9;
   transform: scale(1.01);
 }

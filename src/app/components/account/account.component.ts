@@ -1,6 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {IUser} from '../../models';
-import {UserService} from '../../services';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-account',
@@ -8,14 +6,10 @@ import {UserService} from '../../services';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-  user: IUser;
 
-  constructor(private userService: UserService) {
-  }
+  constructor() { }
 
   ngOnInit(): void {
-    const id = this.userService.getUserId();
-    this.userService.getUserById(id).subscribe(value => this.user = value);
   }
 
 }

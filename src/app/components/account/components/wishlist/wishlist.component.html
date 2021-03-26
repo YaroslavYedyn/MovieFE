@@ -1,3 +1,4 @@
-<div class="wishlist">
+<div *ngIf="!!user.wishlist.length" class="wishlist">
   wishlist
 </div>
+<div *ngIf="!user.wishlist.length" class="empty">wishlist empty!</div>

@@ -1,0 +1,21 @@
+<div class="email-setting">
+  <p>Надіслати повідомлення користувачам</p>
+  <form [formGroup]="email" method="post" class="mail-form"
+        (ngSubmit)="sendMail()">
+    <label for="topic">Тема</label>
+    <input [formControl]="topic" class="topic" name="topic" id="topic" type="text">
+    <!--    <label for="text">Текст</label>-->
+    <!--    <input class="text" id="text" type="text">-->
+    <label for="text" class="text">
+      Текст
+      <textarea id="text" [formControl]="text"></textarea>
+    </label>
+    <label for="check" class="check-all-user">
+      Всім користувачам
+      <input [formControl]="allUser" id="check" type="checkbox">
+    </label>
+    <input class="email-btn" type="submit" value="Відправити">
+  </form>
+
+  <!--  {{user|json}}-->
+</div>

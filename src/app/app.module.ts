@@ -10,6 +10,13 @@ import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {ItemComponent} from './components/item/item.component';
 import {TokenInterceptorService} from './services';
+import { MovieSettingComponent } from './components/admin/components/movie-setting/movie-setting.component';
+import { EmailSettingComponent } from './components/admin/components/email-setting/email-setting.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AccountComponent } from './components/account/account.component';
+import { ProfileComponent } from './components/account/components/profile/profile.component';
+import { WishlistComponent } from './components/account/components/wishlist/wishlist.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,13 +24,20 @@ import {TokenInterceptorService} from './services';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    ItemComponent
+    ItemComponent,
+    MovieSettingComponent,
+    EmailSettingComponent,
+    AdminComponent,
+    AccountComponent,
+    ProfileComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

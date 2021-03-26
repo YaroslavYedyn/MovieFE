@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+
 // @ts-ignore
-import back from '../../../../image/back.svg';
-// @ts-ignore
-import profilePhoto from '../../../../image/account.svg';
+import {IUser} from '../../../../models';
 import {Router} from '@angular/router';
 import {UserService} from '../../../../services';
-import {IUser} from '../../../../models';
 
 @Component({
   selector: 'app-profile',
@@ -18,22 +16,14 @@ export class ProfileComponent implements OnInit {
   user: IUser;
   baseUrlImg = 'http://localhost:5050/';
 
-
   constructor(private router: Router, private userService: UserService) {
   }
 
-
   ngOnInit(): void {
-    this.back = back;
     this.userService.getUserById(this.userService.getUserId()).subscribe(value => {
       this.user = value;
       this.backdrop = this.baseUrlImg + value.avatar;
-      console.log(!this.user.avatar);
     });
-  }
-
-  goBack(): void {
-    this.router.navigate(['account']);
   }
 
   handleFileInput(files: any): void {
@@ -53,4 +43,5 @@ export class ProfileComponent implements OnInit {
     });
 
   }
+
 }

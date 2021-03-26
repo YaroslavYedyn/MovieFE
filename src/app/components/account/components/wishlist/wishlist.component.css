@@ -8,5 +8,18 @@
   justify-content: flex-start;
   align-items: center;
   text-align: center;
-  padding: 50px;
+  background: cadetblue;
+}
+
+.empty {
+  margin: 0 auto;
+  width: 80%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
 }
