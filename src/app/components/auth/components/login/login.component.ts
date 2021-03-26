@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ILogin, IToken} from '../../../../models';
-import {AuthService} from '../../../../services';
+import {AuthService, UserService} from '../../../../services';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   error: any;
+  message: string;
   auth: ILogin;
   token: IToken;
   password = new FormControl('', [Validators.required]);
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     email: this.email,
   });
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -28,9 +29,15 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.auth = {password: this.password.value, email: this.email.value};
-    this.authService.login(this.auth).subscribe(() => {
+    this.authService.login(this.auth).subscribe((value) => {
       this.router.navigate(['']);
-    }, error1 => this.error = error1.error);
+      this.userService.setUserId(value.user_id);
+    }, (error) => {
+      console.log('*error*');
+      this.error = error.error;
+      this.message = error.error.message;
+      console.log(this.message);
+    });
 
   }
 }

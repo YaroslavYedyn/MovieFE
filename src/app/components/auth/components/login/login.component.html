@@ -7,6 +7,7 @@
       <input [formControl]="password" class="password" type="password" placeholder="Please enter password">
       <input class="login-btn" type="submit" value="Вхід">
       <div *ngIf="error">{{error|json}}</div>
+      <div>{{message}}</div>
     </form>
   </div>
 </div>

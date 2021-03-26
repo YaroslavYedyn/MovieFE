@@ -1,0 +1,39 @@
+.account {
+  margin: 0 auto;
+  width: 80%;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  background-position: top center;
+  background-size: cover;
+  padding: 50px;
+}
+
+.functional {
+  width: 100%;
+  display: flex;
+}
+
+.account-item {
+  width: 150px;
+  height: 150px;
+  background: #f8104d;
+  margin-right: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.account-item:hover {
+  opacity: 0.9;
+  transform: scale(1.01);
+}

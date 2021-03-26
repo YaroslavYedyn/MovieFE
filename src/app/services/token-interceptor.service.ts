@@ -31,7 +31,7 @@ export class TokenInterceptorService implements HttpInterceptor {
       console.log(res);
       if (res.status === 403) {
         console.log('***403***');
-        this.router.navigate(['auth/login'], {
+        this.router.navigate(['error/not/auth'], {
           queryParams: {
             sessionFiled: true
           }

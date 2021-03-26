@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../services';
+import {AuthService, RoleGuardService, UserService} from '../../services';
 import {Router} from '@angular/router';
+// @ts-ignore
+import accountImg from '../../image/account.svg';
+import {IUser} from '../../models';
 
 @Component({
   selector: 'app-header',
@@ -8,16 +11,26 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  // router = false;
+  accountImg;
+  baseUrlImg = 'http://localhost:5050/';
 
-  constructor(private authService: AuthService, private router: Router) {
+
+  constructor(private authService: AuthService,
+              private roleService: RoleGuardService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
+    this.accountImg = accountImg;
+  }
+
+  logIn(): void {
+    this.router.navigate(['auth']);
   }
 
   logout(): void {
     this.authService.removeTokens();
+
     this.router.navigate(['']);
   }
 }

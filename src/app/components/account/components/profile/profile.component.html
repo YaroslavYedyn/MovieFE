@@ -1,0 +1,16 @@
+<div class="profile">
+  <div class="back" (click)="goBack()">
+    <img [src]="back" alt="back">
+  </div>
+  <div>
+    <div class="avatar">
+      <img *ngIf="!!user.avatar" [src]="backdrop" alt="backdrop">
+      <img *ngIf="!user.avatar" [src]="backdrop" alt="backdrop">
+    </div>
+    <input type="file" (change)="handleFileInput($event.target.files)">
+  </div>
+  <div class="info">
+    <p>username: {{user.username}}</p>
+    <p>email: {{user.email}}</p>
+  </div>
+</div>

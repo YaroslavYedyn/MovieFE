@@ -1,0 +1,42 @@
+.not-auth {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-position: top center;
+  background-size: cover;
+}
+.not-auth p {
+  font-size: 58px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  width: 60%;
+}
+.not-auth button {
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+.not-auth button:hover {
+  opacity: 0.7;
+}
+.sub-title{
+  margin-top: 10px;
+  font-size: 15px;
+}
+.sub-title a{
+  cursor: pointer;
+  color: #f8104d;
+}
+.sub-title a:hover{
+  border-bottom: 1px solid #f8104d;
+}

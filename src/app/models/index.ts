@@ -1,3 +1,4 @@
+export * from './IAllUser';
 export * from './ILogin';
 export * from './IMovie';
 export * from './IResponse';

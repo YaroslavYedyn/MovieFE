@@ -10,6 +10,16 @@
     <li>серіали</li>
     <li>мультфільми</li>
   </ul>
-  <div class="auth" [routerLink]="['auth']"  >вхід</div>
-  <div class="auth" (click)="logout()" >Вихід</div>
+  <div class="auth">
+    <div class="account" *ngIf="this.authService.isAuthenticated()&&this.roleService.setRole('admin')"
+         [routerLink]="['admin']">
+      <img [src]="accountImg" alt="">
+    </div>
+    <div class="account" *ngIf="this.authService.isAuthenticated()&&this.roleService.setRole('user')"
+         [routerLink]="['account']">
+      <img [src]="accountImg" alt="">
+    </div>
+    <a (click)="this.authService.isAuthenticated()?logout():logIn()">
+      {{this.authService.isAuthenticated() ? 'Вихід' : 'Вхід'}}</a>
+  </div>
 </header>
