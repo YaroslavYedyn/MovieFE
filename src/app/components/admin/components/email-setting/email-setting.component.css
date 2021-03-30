@@ -4,7 +4,6 @@
   height: 100%;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
 }
 
 .mail-form {
@@ -36,9 +35,10 @@
   outline: none;
 }
 
-.text{
+.text {
   margin-top: 20px;
 }
+
 .topic {
   width: 400px;
   border: none;
@@ -60,7 +60,26 @@
 .email-btn:hover {
   opacity: 0.7;
 }
-.check-all-user input{
+
+.check-all-user input {
   width: 20px;
   height: 20px;
+}
+
+.popup {
+  width: 300px;
+  height: 400px;
+  margin-left: 100px;
+  box-shadow: 0 10px 10px rgba(14, 1, 1, 55);
+  border: 1px solid #483839;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  overflow-x: hidden; /*для вертикального*/
+}
+
+.select {
+  margin-left: 5px;
+  margin-top: 4px;
+  padding: 0 4px;
 }

@@ -1,3 +1,93 @@
 <div class="movie-setting">
-  movie
+  <div class="btn-wrapper">
+    <button (click)="isAddMovie=!isAddMovie;isRemoveMovie=!isRemoveMovie" [disabled]="isAddMovie" class="btn-movie">
+      Додати
+    </button>
+    <button (click)="isRemoveMovie=!isRemoveMovie;isAddMovie=!isAddMovie" [disabled]="isRemoveMovie" class="btn-movie">
+      Видалити
+    </button>
+  </div>
+  <div *ngIf="isAddMovie" class="add-movie">
+    <p>Додати фільм</p>
+    <form [formGroup]="addForm" class="add-form" action="" method="post" (ngSubmit)="addMovie()">
+      <label for="movie_id">
+        ID
+        <input [formControl]="movieId" class="number-input" id="movie_id" type="number">
+      </label>
+      <label for="lang">
+        Мова орігіналу
+        <select [formControl]="lang" name="lang" id="lang">
+          <option value="en">en</option>
+          <option value="uk">uk</option>
+          <option value="fr">fr</option>
+          <option value="pt">pt</option>
+          <option value="pl">pl</option>
+          <option value="ru">ru</option>
+        </select>
+      </label>
+      <label for="original_title">
+        Оріганальна назва
+        <input class="text-input" [formControl]="originalTitle" id="original_title" type="text">
+      </label>
+      <label for="title">
+        Назва
+        <input class="text-input" [formControl]="title" id="title" type="text">
+      </label>
+      <label for="overview">
+        Опис
+        <input class="text-input" [formControl]="overview" id="overview" type="text">
+      </label>
+      <label for="popularity">
+        Популярність
+        <input [formControl]="popularity" class="number-input" id="popularity" type="number">
+      </label>
+      <label for="vote_average">
+        Середня оцінка
+        <input [formControl]="voteAverage" class="number-input" id="vote_average" type="number">
+      </label>
+      <label for="vote_count">
+        Кількість оцінок
+        <input [formControl]="voteCount" class="number-input" id="vote_count" type="number">
+      </label>
+      <label for="release_date">
+        Дата виходу
+        <input [formControl]="voteCount" class="number-input" id="release_date" type="date">
+      </label>
+      <label for="backdrop_path">
+        Фонове зображення
+        <input id="backdrop_path" (change)="handleBackdropInput($event.target)"
+               name="backdrop_path" type="file">
+      </label>
+      <label for="poster_path">
+        Головне зображення
+        <input id="poster_path" name="backdrop_path" type="file">
+      </label>
+      <label for="video">
+        Трейлер
+        <input id="video" name="backdrop_path" type="file">
+      </label>
+      <input class="btn-movie add" type="submit" value="Додати">
+    </form>
+  </div>
+  <div *ngIf="isRemoveMovie" class="remove-movie">
+    <form [formGroup]="searchForm" action="" (ngSubmit)="search()">
+      <label for="search">
+        <input [formControl]="value" id="search" type="search" placeholder="пошук....">
+      </label>
+      <input type="submit">
+    </form>
+    <div class="movie-list">
+      <div *ngFor="let movie of movies">
+        <div class="movie">
+          <div>
+            <a class="attribute">id:<a>{{movie.movie_id}},</a></a>
+            <a class="attribute">назва:<a>{{movie.title}},</a></a>
+            <a class="attribute">оригінальна назва:<a>{{movie.original_title}},</a></a>
+            <a class="attribute">дата виходу:<a>{{movie.release_date| date}}</a></a>
+          </div>
+          <button (click)="remove(movie._id)" class="remove-btn">видалити</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

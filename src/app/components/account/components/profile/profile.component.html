@@ -1,13 +1,46 @@
 <div class="profile">
   <div>
     <div class="avatar">
-      <img *ngIf="!!user.avatar" [src]="backdrop" alt="backdrop">
+      <img *ngIf="!!user.avatar" [src]="backdropImg" alt="backdrop">
       <img *ngIf="!user.avatar" [src]="backdrop" alt="backdrop">
     </div>
     <input type="file" (change)="handleFileInput($event.target.files)">
   </div>
-  <div class="info">
-    <p>username: {{user.username}}</p>
-    <p>email: {{user.email}}</p>
+  <div class="right">
+    <div *ngIf="!editStatus" class="info">
+      <p>Ім`я користувача: {{user.username}}</p>
+      <p>Email: {{user.email}}</p>
+      <p>Iм`я: {{user.name}}</p>
+      <p>Стать: {{user.gender}}</p>
+      <p>Вік: {{user.age}}</p>
+      <button class="btn-edit" (click)="editStatus=!editStatus">Редагувати</button>
+    </div>
+    <div class="edit" *ngIf="editStatus">
+      <form [formGroup]="editForm" (ngSubmit)="edit()">
+        <label for="username">
+          Ім`я користувача
+          <input [formControl]="username" id="username" type="text" [value]="user.username">
+        </label>
+        <label for="name">
+          Ім`я
+          <input [formControl]="name" id="name" type="text" [value]="user.name">
+        </label>
+        <label for="male">
+          Стать
+          <select [formControl]="gender" name="male" id="male">
+            <option value="жінка">Жінка</option>
+            <option value="чоловік">Чоловік</option>
+          </select>
+        </label>
+        <label for="age">
+          Вік
+          <input [formControl]="age" id="age" type="number" [value]="user.age">
+        </label>
+        <div>
+          <input class="btn-edit" type="submit" value="ок">
+          <input class="btn-edit" type="button" value="Відмінити" (click)="editStatus=!editStatus">
+        </div>
+      </form>
+    </div>
   </div>
 </div>

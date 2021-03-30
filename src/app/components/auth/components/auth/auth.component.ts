@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {IUser} from '../../../../models';
 import {UserService} from '../../../../services';
+import {IRegister} from '../../../../models/IRegister';
 
 // import errorMessage from '../../../../constants/error.messages';
 
@@ -14,7 +15,7 @@ import {UserService} from '../../../../services';
 })
 export class AuthComponent implements OnInit {
   @Input()
-  users: IUser;
+  user: IRegister;
   res: any;
   error: string;
   username = new FormControl('', [Validators.required]);
@@ -33,13 +34,13 @@ export class AuthComponent implements OnInit {
   }
 
   auth(): void {
-    this.users = {username: this.username.value, password: this.password.value, email: this.email.value, avatar: '', wishlist: []};
-    const status = this.userService.createAccount(this.users).subscribe(value => {
+    this.user = {username: this.username.value, password: this.password.value, email: this.email.value};
+    const status = this.userService.createAccount(this.user).subscribe(value => {
       this.router.navigate(['check'], {
         relativeTo: this.activatedRoute,
       });
     }, error => {
-      // this.error = errorMessage[error.error.customCode].message;
+      alert(error.message);
     });
   }
 }

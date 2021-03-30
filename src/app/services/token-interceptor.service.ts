@@ -26,10 +26,17 @@ export class TokenInterceptorService implements HttpInterceptor {
           console.log('***401***');
           return this.handle401Error(req, next);
         }
-        console.log(res.error.details);
+        if (res.error.customCode === 4000) {
+          console.log(res.error);
+          alert(res.error.message.details[0].message);
+        }
       }
-      console.log(res);
       if (res.status === 403) {
+        if (res.error.customCode === 4003) {
+          console.log('***4003***');
+          alert(res.error.message);
+          return res.error;
+        }
         console.log('***403***');
         this.router.navigate(['error/not/auth'], {
           queryParams: {
@@ -48,7 +55,6 @@ export class TokenInterceptorService implements HttpInterceptor {
   private handle401Error(req: HttpRequest<any>, next: HttpHandler): any {
     return this.authService.refreshToken().pipe(
       switchMap((tokens) => {
-        console.log(tokens);
         return next.handle(this.addToken(req, tokens.access_token));
       })
     );

@@ -4,7 +4,7 @@ import {IAllUser, IResponse, IUser} from '../models';
 import {HttpClient} from '@angular/common/http';
 
 const enum endpoint {
-  users = 'users',
+  users = 'users/',
   auth = 'auth',
   activate = 'email/activate',
   send_mail = 'email/send',
@@ -46,11 +46,13 @@ export class UserService {
     return this.httpClient.post<void>(`${this.URL}${endpoint.activate}`, {token});
   }
 
-  updateUser(query, updateBody): Observable<void> {
-    return this.httpClient.put<void>(`${this.URL}${endpoint.users}`, updateBody, {params: query});
+  updateUser(query, updateBody): Observable<IUser> {
+    console.log(updateBody);
+    return this.httpClient.put<IUser>(`${this.URL}${endpoint.users}`, updateBody, {params: query});
   }
 
   sendMail(message, users): Observable<void> {
+    console.log({...message, users});
     return this.httpClient.post<void>(`${this.URL}${endpoint.send_mail}`, {...message, users});
   }
 }

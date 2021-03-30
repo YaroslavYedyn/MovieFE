@@ -1,4 +1,16 @@
-<div *ngIf="!!user.wishlist.length" class="wishlist">
-  wishlist
+<div *ngIf="user">
+  <div *ngIf="user.wishlist.length!==0" class="wishlist">
+    <div *ngFor="let movie of user._wishlist" class="item">
+      <div class="image-wrapper">
+        <img [src]="URl+movie.poster_path" [alt]="movie.title">
+      </div>
+      <a class="title">{{movie.title}}
+      </a>
+      <p class="btn">
+        <button (click)="play(movie.id)" class="wishlist-btn play">Дивитись</button>
+        <button (click)="removeFromWishlist(movie.id)" class="wishlist-btn remove">Видалити</button>
+      </p>
+    </div>
+  </div>
+  <div *ngIf="user.wishlist.length===0" class="empty">wishlist empty!</div>
 </div>
-<div *ngIf="!user.wishlist.length" class="empty">wishlist empty!</div>

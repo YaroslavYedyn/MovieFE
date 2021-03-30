@@ -30,13 +30,14 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.auth = {password: this.password.value, email: this.email.value};
     this.authService.login(this.auth).subscribe((value) => {
+      console.log(value, 'log');
       this.router.navigate(['']);
       this.userService.setUserId(value.user_id);
     }, (error) => {
       console.log('*error*');
       this.error = error.error;
       this.message = error.error.message;
-      console.log(this.message);
+      console.log(this.message, 'error');
     });
 
   }

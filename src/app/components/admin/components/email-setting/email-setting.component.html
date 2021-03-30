@@ -1,21 +1,34 @@
 <div class="email-setting">
-  <p>Надіслати повідомлення користувачам</p>
-  <form [formGroup]="email" method="post" class="mail-form"
-        (ngSubmit)="sendMail()">
-    <label for="topic">Тема</label>
-    <input [formControl]="topic" class="topic" name="topic" id="topic" type="text">
-    <!--    <label for="text">Текст</label>-->
-    <!--    <input class="text" id="text" type="text">-->
-    <label for="text" class="text">
-      Текст
-      <textarea id="text" [formControl]="text"></textarea>
-    </label>
-    <label for="check" class="check-all-user">
-      Всім користувачам
-      <input [formControl]="allUser" id="check" type="checkbox">
-    </label>
-    <input class="email-btn" type="submit" value="Відправити">
-  </form>
-
-  <!--  {{user|json}}-->
+  <div>
+    <p>Надіслати повідомлення користувачам</p>
+    <form [formGroup]="email" method="post" class="mail-form"
+          (ngSubmit)="sendMail()">
+      <label for="topic">Тема</label>
+      <input [formControl]="topic" class="topic" name="topic" id="topic" type="text">
+      <!--    <label for="text">Текст</label>-->
+      <!--    <input class="text" id="text" type="text">-->
+      <label for="text" class="text">
+        Текст
+        <textarea id="text" [formControl]="text"></textarea>
+      </label>
+      <label for="check" class="check-all-user">
+        Всім користувачам
+        <input [formControl]="allUser" id="check" type="checkbox">
+      </label>
+      <label *ngIf="!allUser.value" for="user">
+        Вибрати користувача
+        <input (click)="popup()" id="user" type="button" value="Вибрати">
+      </label>
+      <input class="email-btn" type="submit" value="Відправити">
+    </form>
+  </div>
+  <div class="popup" *ngIf="popupStatus">
+    <div *ngFor="let user of users">
+      <div class="select">
+        {{user.email}}
+        <button (click)="select(user)">ок</button>
+      </div>
+    </div>
+  </div>
 </div>
+

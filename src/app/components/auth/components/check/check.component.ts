@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+// @ts-ignore
+import checkImage from '../../../../image/check.jpg';
 
 @Component({
   selector: 'app-check',
@@ -6,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./check.component.css']
 })
 export class CheckComponent implements OnInit {
+  image = checkImage;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

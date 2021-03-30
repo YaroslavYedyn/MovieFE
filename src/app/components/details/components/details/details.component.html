@@ -1,14 +1,39 @@
 <div *ngIf="movie">
-  <div
-    [ngStyle]="{'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('+headerBGUrl+')'}"
-
-    class="details">
-    <!--    <img [src]="headerBGUrl" alt="">-->
-    <video [poster]="headerBGUrl" width="480" controls>
-      <source [src]="baseUrl+movie.video" type="video/mp4">
-    </video>
-
-    <h1>{{movie.title}}</h1>
+  <div [ngStyle]="{'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('+headerBGUrl+')'}"
+       class="details">
+    <div class="top">
+      <div class="top-info">
+        <p class="title">Фільм {{movie.title}}</p>
+        <p class="title">дивитись онлайн</p>
+        <p class="orig_title">{{movie.original_title}}</p>
+        <div class="genres">
+          <div class="genres-item" *ngFor="let genre of movie.genre">{{genre}}</div>
+        </div>
+        <p class="date">{{movie.release_date|date}}</p>
+      </div>
+      <video [poster]="baseUrl+movie.backdrop_path" width="100%" autocapitalize="words" height controls>
+        <source [src]="baseUrl+movie.video" type="video/mp4">
+      </video>
+      <div class="bottom-info">
+        <div class="bottom-left">
+          <div class="btn-wishlist" (click)="addWishlist(movie._id)">
+            <img [src]="isWishlist?heartBlack:heart" alt="heart-icon">
+            Дивитись пізніше
+          </div>
+          <!--          <button class="btm-wishlist" (click)="addWishlist(movie._id)">{{isWishlist ? 'Видалити' : 'Додати'}}</button>-->
+          <div class="average">
+            <a>{{movie.vote_average}}</a>
+            <p>рейтинг 1film</p>
+          </div>
+        </div>
+        <div class="overview">
+          <p>Сюжет Обережно, спойлери</p>
+          <a>{{movie.overview}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <p></p>
+    </div>
   </div>
 </div>
-<!--    [style.background-image]="'url(' + headerBGUrl + ')'"-->

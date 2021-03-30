@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ILogin, IToken} from '../models';
 import {HttpClient} from '@angular/common/http';
-import * as moment from 'moment';
 import {take, tap} from 'rxjs/operators';
 
 
