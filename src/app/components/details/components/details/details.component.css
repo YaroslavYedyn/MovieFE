@@ -112,13 +112,6 @@
   font-weight: 500;
 }
 
-.bottom {
-  margin: 0 auto;
-  width: 70%;
-  height: 500px;
-  background: violet;
-}
-
 .btn-wishlist {
   cursor: pointer;
   margin: 10px;
@@ -135,5 +128,136 @@
 .btn-wishlist img {
   width: 24px;
   height: 24px;
+  object-fit: cover;
+}
+
+.bottom {
+  margin: 0 auto;
+  width: 70%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 1px solid #c8c1ed;
+  background: #1a143a;
+}
+
+.comment {
+  width: 100%;
+  min-height: 350px;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.add-comment {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 150px;
+  background: #1a143a;
+}
+
+.add-comment-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.textarea textarea {
+  background: #261e54;
+  color: #c8c1ed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  max-width: 94%;
+  min-width: 94%;
+  max-height: 100px;
+  min-height: 100px;
+}
+
+.textarea {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-btn {
+  width: 150px;
+  height: 30px;
+  margin: 10px 60px;
+  border-radius: 5px;
+  border: none;
+}
+
+.comment-btn:hover {
+  opacity: 0.7;
+}
+
+.row-comment {
+  width: 100%;
+  height: fit-content;
+  color: #c8c1ee;
+  border-radius: 5px;
+  display: flex;
+  margin: 10px 0;
+}
+
+.comment-user {
+  width: content-box;
+  margin-right: 20px;
+  display: flex;
+  color: #6152a5;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+.comment-avatar {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-date {
+  font-size: 10px;
+  color: #f8104d;
+  text-align: left;
+}
+
+.comment-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.comment-text {
+  width: 90%;
+  padding: 3px;
+}
+
+.remove-comment {
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  overflow: hidden;
+}
+
+.remove-comment img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }

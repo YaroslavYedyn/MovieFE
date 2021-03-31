@@ -3,3 +3,4 @@ export * from './movie.service';
 export * from './role-guard.service';
 export * from './user.service';
 export * from './token-interceptor.service';
+export * from './comment.service';

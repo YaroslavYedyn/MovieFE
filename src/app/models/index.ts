@@ -6,3 +6,4 @@ export * from './IRegister';
 export * from './IResponse';
 export * from './IToken';
 export * from './IUser';
+export * from './IComment';

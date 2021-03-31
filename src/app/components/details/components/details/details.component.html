@@ -33,7 +33,35 @@
       </div>
     </div>
     <div class="bottom">
-      <p></p>
+      <div class="comment">
+        <div class="row-comment" *ngFor="let comment of comments">
+          <div class="comment-user" *ngFor="let user of comment.user">
+            <div class="comment-avatar">
+              <img *ngIf="user.avatar" [src]="baseUrl+user.avatar" alt="">
+              <img *ngIf="!user.avatar" [src]="defaultAvatar" alt="">
+            </div>
+            <span class="user-info">
+              <a>{{user.username}}</a>
+             <a class="comment-date">{{comment.createdAt|date:'short'}}</a>
+              </span>
+          </div>
+          <div class="comment-text">
+            {{comment.comment}}
+          </div>
+          <div *ngIf="comment.user_id===user._id" (click)="removeComment(comment._id)" class="remove-comment">
+            <img [src]="removeIcon" alt="remove">
+          </div>
+        </div>
+      </div>
+      <div class="add-comment">
+        <form [formGroup]="commentForm" class="add-comment-form" (ngSubmit)="addComment()">
+          <label class="textarea" for="comment">
+          <textarea [formControl]="comment" maxlength="350" id="comment">
+          </textarea>
+          </label>
+          <input class="comment-btn" type="submit" value="Коментувати">
+        </form>
+      </div>
     </div>
   </div>
 </div>
