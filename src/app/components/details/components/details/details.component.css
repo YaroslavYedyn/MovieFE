@@ -134,7 +134,7 @@
 .bottom {
   margin: 0 auto;
   width: 70%;
-  min-height: 500px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -144,8 +144,8 @@
 
 .comment {
   width: 100%;
-  min-height: 350px;
-  height: 100%;
+  max-height: 100%;
+  min-height: 100px;
   padding: 0 20px;
 }
 

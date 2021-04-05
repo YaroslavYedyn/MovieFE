@@ -11,10 +11,10 @@ import {IMovie} from '../../../../models';
 export class MovieSettingComponent implements OnInit {
   isAddMovie = true;
   isRemoveMovie = false;
-  backdropPath;
   movies: [IMovie];
+  movie: any;
 
-  movieId = new FormControl(0, [Validators.required]);
+  movieId = new FormControl(0, [Validators.required, Validators.maxLength(20)]);
   popularity = new FormControl(0, [Validators.required]);
   lang = new FormControl('', [Validators.required]);
   originalTitle = new FormControl('', [Validators.required]);
@@ -23,6 +23,10 @@ export class MovieSettingComponent implements OnInit {
   voteAverage = new FormControl(0, [Validators.required]);
   voteCount = new FormControl(0, [Validators.required]);
   releaseDate = new FormControl(0, [Validators.required]);
+  genre = new FormControl('', [Validators.required]);
+  backdropPath: FormData = new FormData();
+  posterPath: FormData = new FormData();
+  trailer: FormData = new FormData();
   addForm = new FormGroup({
     movie_id: this.movieId,
     original_language: this.lang,
@@ -33,7 +37,9 @@ export class MovieSettingComponent implements OnInit {
     vote_average: this.voteAverage,
     vote_count: this.voteCount,
     release_date: this.releaseDate,
+    genre: this.genre
   });
+
 
   value = new FormControl('', [Validators.required]);
   searchForm = new FormGroup({
@@ -47,26 +53,18 @@ export class MovieSettingComponent implements OnInit {
   }
 
   addMovie(): void {
-    const movieData = {...this.addForm.getRawValue()};
-    console.log(this.addForm.getRawValue());
-    const uploadData = new FormData();
-    uploadData.append('upload_file', this.backdropPath, this.backdropPath.name);
-    console.log(uploadData);
-    this.movieService.addMovie(uploadData).subscribe(value => console.log(value));
-
-  }
-
-  handleBackdropInput(target: any): void {
-    if (target.files.length > 0) {
-      const selectedFile = target.files[0];
-      this.backdropPath = selectedFile;
-      // const uploadData = new FormData();
-      // uploadData.append('upload_file', this.backdropPath, this.backdropPath.name);
-      // this.movieService.addMovie(uploadData).subscribe(value => console.log(value));
-
-
+    console.log('valid');
+    if (this.addForm.valid) {
+      console.log('invalid');
+      this.movieService.addMovie({
+        ...this.addForm.getRawValue(),
+        backdrop_path: this.backdropPath[0],
+        poster_path: this.posterPath[0],
+        video: this.trailer[0]
+      }).subscribe(value => {
+        this.movie = value;
+      }, error => alert(error.statusText));
     }
-
   }
 
   search(): void {
@@ -75,5 +73,6 @@ export class MovieSettingComponent implements OnInit {
 
   remove(id: string): void {
     this.movieService.removeMovieByID(id).subscribe(value1 => console.log(value1));
+    this.movieService.getAllMovie(this.searchForm.getRawValue()).subscribe(value1 => this.movies = value1.data);
   }
 }

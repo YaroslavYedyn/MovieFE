@@ -1,4 +1,5 @@
-<div class="item_wrapper" (click)="details(item._id)">
+<div *ngIf="item.poster_path!==''&&item.backdrop_path!==''&&item.video!==''" class="item_wrapper"
+     (click)="details(item._id)">
   <div class="img_wrapper">
     <img [src]="baseUrlImg+item.poster_path" alt="">
   </div>

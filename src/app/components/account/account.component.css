@@ -2,7 +2,6 @@
   margin: 0 auto;
   width: 80%;
   min-height: 160px;
-  height: 160px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +12,7 @@
 .functional {
   width: 100%;
   display: flex;
+  margin: 20px;
 }
 
 .account-item {

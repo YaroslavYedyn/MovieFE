@@ -25,6 +25,29 @@
           <option value="ru">ru</option>
         </select>
       </label>
+      <label for="genre">
+        Жанри
+        <select [formControl]="genre" id="genre">
+          <option value="Бойовик">Бойовик</option>
+          <option value="Пригоди">Пригоди</option>
+          <option value="Мультфільм">Мультфільм</option>
+          <option value="Кримінал">Кримінал</option>
+          <option value="Документальний">Документальний</option>
+          <option value="Драма">Драма</option>
+          <option value="Сімейний">Сімейний</option>
+          <option value="Фентезі">Фентезі</option>
+          <option value="Історичний">Історичний</option>
+          <option value="Жахи">Жахи</option>
+          <option value="Музика">Музика</option>
+          <option value="Детектив">Детектив</option>
+          <option value="Мелодрама">Мелодрама</option>
+          <option value="Фантастика">Фантастика</option>
+          <option value="Телефільм">Телефільм</option>
+          <option value="Трилер">Трилер</option>
+          <option value="Військовий">Військовий</option>
+          <option value="Вестерн">Вестерн</option>
+        </select>
+      </label>
       <label for="original_title">
         Оріганальна назва
         <input class="text-input" [formControl]="originalTitle" id="original_title" type="text">
@@ -51,22 +74,22 @@
       </label>
       <label for="release_date">
         Дата виходу
-        <input [formControl]="voteCount" class="number-input" id="release_date" type="date">
+        <input [formControl]="releaseDate" class="number-input" id="release_date" type="date">
       </label>
       <label for="backdrop_path">
         Фонове зображення
-        <input id="backdrop_path" (change)="handleBackdropInput($event.target)"
+        <input id="backdrop_path" #backdropRef (change)="backdropPath=backdropRef.files"
                name="backdrop_path" type="file">
       </label>
       <label for="poster_path">
         Головне зображення
-        <input id="poster_path" name="backdrop_path" type="file">
+        <input id="poster_path" #posterRef (change)="posterPath=posterRef.files" name="backdrop_path" type="file">
       </label>
       <label for="video">
         Трейлер
-        <input id="video" name="backdrop_path" type="file">
+        <input id="video" #trailerRef (change)="trailer=trailerRef.files" type="file">
       </label>
-      <input class="btn-movie add" type="submit" value="Додати">
+      <input class="btn-movie add" type="submit" value="Зберегти">
     </form>
   </div>
   <div *ngIf="isRemoveMovie" class="remove-movie">

@@ -69,6 +69,17 @@
   margin: 20px 0;
 }
 
+.files-form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.files-form label {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
 /*remove movie*/
 
 .remove-movie {
@@ -91,6 +102,7 @@
 .movie {
   min-width: 70%;
   height: 50px;
+  margin: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
