@@ -5,6 +5,7 @@ import backdrop from '../../../../image/account.svg';
 import {Router} from '@angular/router';
 import {UserService} from '../../../../services';
 import {IUser} from '../../../../models';
+import validate = WebAssembly.validate;
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +14,7 @@ import {IUser} from '../../../../models';
 })
 export class ProfileComponent implements OnInit {
   editStatus = false;
+  changePasswordStatus = false;
   back;
   backdrop = backdrop;
   backdropImg;
@@ -28,6 +30,14 @@ export class ProfileComponent implements OnInit {
     gender: this.gender,
     age: this.age,
     username: this.username,
+  });
+
+  oldPassword = new FormControl('', [Validators.required, Validators.minLength(8)]);
+  newPassword = new FormControl('', [Validators.required, Validators.minLength(8)]);
+  repeatPassword = new FormControl('', [Validators.required, Validators.minLength(8)]);
+  changePasswordForm = new FormGroup({
+    old_password: this.oldPassword,
+    new_password: this.newPassword,
   });
 
   constructor(private router: Router, private userService: UserService) {
@@ -61,5 +71,12 @@ export class ProfileComponent implements OnInit {
       this.editStatus = !this.editStatus;
       this.userService.getUserById(this.userService.getUserId()).subscribe(value1 => this.user = value1);
     }, error => console.log(error));
+  }
+
+  changePassword(): void {
+    this.userService.changePassword({
+      ...this.changePasswordForm.getRawValue(),
+      user_id: this.userService.getUserId()
+    }).subscribe(value => alert(value.message), error => alert(error.error.message));
   }
 }

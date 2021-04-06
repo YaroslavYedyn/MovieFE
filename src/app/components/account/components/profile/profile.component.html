@@ -14,6 +14,7 @@
       <p>Стать: {{user.gender}}</p>
       <p>Вік: {{user.age}}</p>
       <button class="btn-edit" (click)="editStatus=!editStatus">Редагувати</button>
+      <button class="btn-edit" (click)="changePasswordStatus=!changePasswordStatus">Змінити пароль</button>
     </div>
     <div class="edit" *ngIf="editStatus">
       <form [formGroup]="editForm" (ngSubmit)="edit()">
@@ -37,10 +38,25 @@
           <input [formControl]="age" id="age" type="number" [value]="user.age">
         </label>
         <div>
-          <input class="btn-edit" type="submit" value="ок">
+          <input class="btn-edit" type="submit" value="Змінити">
           <input class="btn-edit" type="button" value="Відмінити" (click)="editStatus=!editStatus">
         </div>
       </form>
     </div>
+  </div>
+  <div *ngIf="changePasswordStatus" class="change-password">
+    <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+      <input class="change-input" [formControl]="oldPassword" placeholder="Введіть старий пароль" type="text">
+      <input class="change-input" [formControl]="newPassword" placeholder="Введіть новий пароль" type="password">
+      <input class="change-input" [formControl]="repeatPassword" placeholder="Введіть новий пароль ще раз"
+             type="password">
+      <div class="change-btn-wrapper">
+        <input class="btn-edit"
+               [disabled]="changePasswordForm.invalid||repeatPassword.invalid||newPassword.value!==repeatPassword.value"
+               type="submit"
+               value="Змінити">
+        <button class="btn-edit" (click)="changePasswordStatus=!changePasswordStatus">Відмінити</button>
+      </div>
+    </form>
   </div>
 </div>

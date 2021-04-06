@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 
 const enum endpoint {
   users = 'users/',
+  change_password = 'changePassword',
   auth = 'auth',
   activate = 'email/activate',
   send_mail = 'email/send',
@@ -49,6 +50,10 @@ export class UserService {
   updateUser(query, updateBody): Observable<IUser> {
     console.log(updateBody);
     return this.httpClient.put<IUser>(`${this.URL}${endpoint.users}`, updateBody, {params: query});
+  }
+
+  changePassword(object): Observable<any> {
+    return this.httpClient.patch<any>(`${this.URL}${endpoint.users}${endpoint.change_password}`, object);
   }
 
   sendMail(message, users): Observable<void> {
