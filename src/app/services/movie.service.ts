@@ -26,8 +26,8 @@ export class MovieService {
     return this.httpClient.get<IMovie>(`${this.URL}${endpoint.movie}${id}`);
   }
 
-  addMovie(object: IMovie): Observable<void> {
-    console.log(object);
+  addMovie(object: IMovie): Observable<any> {
+    console.log(object.genre);
     const formData = new FormData();
     // @ts-ignore
     formData.append('movie_id', object.movie_id);
@@ -43,11 +43,13 @@ export class MovieService {
     formData.append('original_language', object.original_language);
     formData.append('overview', object.overview);
     // @ts-ignore
-    formData.append('genre', object.genre);
+    for (const genre of object.genre) {
+      formData.append('genre', genre);
+    }
     formData.append('trailer', object.video);
     formData.append('backdrop_path', object.backdrop_path);
     formData.append('poster_path', object.poster_path);
-    return this.httpClient.post<void>(`${this.URL}${endpoint.movie}`, formData);
+    return this.httpClient.post<any>(`${this.URL}${endpoint.movie}`, formData);
   }
 
   updateMovie(id, data): Observable<any> {

@@ -1,7 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators,} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+
 import {MovieService} from '../../../../services';
 import {IMovie} from '../../../../models';
+
+// @ts-ignore
+import removeIcon from '../../../../image/remove-icon.svg';
 
 @Component({
   selector: 'app-movie-setting',
@@ -9,10 +13,11 @@ import {IMovie} from '../../../../models';
   styleUrls: ['./movie-setting.component.css']
 })
 export class MovieSettingComponent implements OnInit {
+  removeIcon = removeIcon;
   isAddMovie = true;
   isRemoveMovie = false;
   movies: [IMovie];
-  movie: any;
+  genderArray = [];
 
   movieId = new FormControl(0, [Validators.required, Validators.maxLength(20)]);
   popularity = new FormControl(0, [Validators.required]);
@@ -37,7 +42,6 @@ export class MovieSettingComponent implements OnInit {
     vote_average: this.voteAverage,
     vote_count: this.voteCount,
     release_date: this.releaseDate,
-    genre: this.genre
   });
 
 
@@ -58,11 +62,12 @@ export class MovieSettingComponent implements OnInit {
       console.log('invalid');
       this.movieService.addMovie({
         ...this.addForm.getRawValue(),
+        genre: this.genderArray,
         backdrop_path: this.backdropPath[0],
         poster_path: this.posterPath[0],
         video: this.trailer[0]
       }).subscribe(value => {
-        this.movie = value;
+        alert(value.message);
       }, error => alert(error.statusText));
     }
   }
@@ -74,5 +79,15 @@ export class MovieSettingComponent implements OnInit {
   remove(id: string): void {
     this.movieService.removeMovieByID(id).subscribe(value1 => console.log(value1));
     this.movieService.getAllMovie(this.searchForm.getRawValue()).subscribe(value1 => this.movies = value1.data);
+  }
+
+  genreAdd(target: any): void {
+    console.log(target.value);
+    this.genderArray.push(target.value);
+    console.log(this.genderArray);
+  }
+
+  removeGenre(genre: string): void {
+    this.genderArray = this.genderArray.filter(value1 => value1 !== genre);
   }
 }

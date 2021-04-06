@@ -132,3 +132,15 @@
   text-transform: uppercase;
   border: none;
 }
+
+.genre-list {
+  display: flex;
+}
+
+
+.remove-icon {
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  margin: -2px 4px;
+}
