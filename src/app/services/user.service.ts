@@ -5,10 +5,13 @@ import {HttpClient} from '@angular/common/http';
 
 const enum endpoint {
   users = 'users/',
+  forgot_password = 'forgotPassword/',
   change_password = 'changePassword',
   auth = 'auth',
   activate = 'email/activate',
   send_mail = 'email/send',
+  send_forgot_token = 'email/sendForgotToken',
+
 }
 
 @Injectable({
@@ -54,6 +57,14 @@ export class UserService {
 
   changePassword(object): Observable<any> {
     return this.httpClient.patch<any>(`${this.URL}${endpoint.users}${endpoint.change_password}`, object);
+  }
+
+  sendTokenForgotPassword(email): Observable<void> {
+    return this.httpClient.post<void>(`${this.URL}${endpoint.send_forgot_token}`, email);
+  }
+
+  forgotPassword(token, password): Observable<void> {
+    return this.httpClient.patch<void>(`${this.URL}${endpoint.users}${endpoint.forgot_password}`, {token, ...password});
   }
 
   sendMail(message, users): Observable<void> {

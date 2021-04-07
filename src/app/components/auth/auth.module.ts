@@ -6,6 +6,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {LoginComponent} from './components/login/login.component';
 import {CheckComponent} from './components/check/check.component';
 import {ActivateComponent} from './components/activate/activate.component';
+import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
+import {ChangePasswordComponent} from './components/change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -13,10 +15,12 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'check', component: CheckComponent},
   {path: 'activate', component: ActivateComponent},
+  {path: 'forgotPassword', component: ForgotPasswordComponent},
+  {path: 'forgot', component: ChangePasswordComponent},
 ];
 
 @NgModule({
-  declarations: [AuthComponent, LoginComponent, CheckComponent, ActivateComponent],
+  declarations: [AuthComponent, LoginComponent, CheckComponent, ActivateComponent, ForgotPasswordComponent, ChangePasswordComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
