@@ -2,51 +2,91 @@
   <p class="title">Всі Фільми</p>
   <div class="filter">
     <div>
-      <select (change)="handleGenreSearch($event.target)" name="genre" id="genre">
-        <option value="Бойовик">Бойовик</option>
-        <option value="Пригоди">Пригоди</option>
-        <option value="Комедія">Комедія</option>
-        <option value="Мультфільм">Мультфільм</option>
-        <option value="Кримінал">Кримінал</option>
-        <option value="Документальний">Документальний</option>
-        <option value="Драма">Драма</option>
-        <option value="Сімейний">Сімейний</option>
-        <option value="Фентезі">Фентезі</option>
-        <option value="Історичний">Історичний</option>
-        <option value="Жахи">Жахи</option>
-        <option value="Музика">Музика</option>
-        <option value="Детектив">Детектив</option>
-        <option value="Мелодрама">Мелодрама</option>
-        <option value="Фантастика">Фантастика</option>
-        <option value="Телефільм">Телефільм</option>
-        <option value="Трилер">Трилер</option>
-        <option value="Військовий">Військовий</option>
-        <option value="Вестерн">Вестерн</option>
-      </select>
-      <select (change)="handleYearSearch($event.target)" name="year" id="year">
-        <option>2021</option>
-        <option>2020</option>
-        <option>2019</option>
-        <option>2017</option>
-        <option>2016</option>
-        <option>2015</option>
-        <option>2014</option>
-        <option>2013</option>
-        <option>2012</option>
-        <option>2011</option>
-        <option>2010</option>
-        <option>2009</option>
-        <option>2008</option>
-        <option>2007</option>
-        <option>2006</option>
-        <option>2005</option>
-        <option>2004</option>
-        <option>2003</option>
-        <option>2002</option>
-        <option>2001</option>
-      </select>
+      <label for="genre">Жанр :
+        <select (change)="handleGenreSearch($event.target)" name="genre" id="genre">
+          <option id="vsi" disabled>Всі жанри</option>
+          <option value="Бойовик">Бойовик</option>
+          <option value="Пригоди">Пригоди</option>
+          <option value="Комедія">Комедія</option>
+          <option value="Кримінал">Кримінал</option>
+          <option value="Документальний">Документальний</option>
+          <option value="Драма">Драма</option>
+          <option value="Сімейний">Сімейний</option>
+          <option value="Фентезі">Фентезі</option>
+          <option value="Історичний">Історичний</option>
+          <option value="Жахи">Жахи</option>
+          <option value="Музика">Музика</option>
+          <option value="Детектив">Детектив</option>
+          <option value="Мелодрама">Мелодрама</option>
+          <option value="Фантастика">Фантастика</option>
+          <option value="Телефільм">Телефільм</option>
+          <option value="Трилер">Трилер</option>
+          <option value="Військовий">Військовий</option>
+          <option value="Вестерн">Вестерн</option>
+        </select>
+      </label>
+      <label for="year">Рік :
+        <select (change)="handleYearSearch($event.target)" name="year" id="year">
+          <option>2021</option>
+          <option>2020</option>
+          <option>2019</option>
+          <option>2017</option>
+          <option>2016</option>
+          <option>2015</option>
+          <option>2014</option>
+          <option>2013</option>
+          <option>2012</option>
+          <option>2011</option>
+          <option>2010</option>
+          <option>2009</option>
+          <option>2008</option>
+          <option>2007</option>
+          <option>2006</option>
+          <option>2005</option>
+          <option>2004</option>
+          <option>2003</option>
+          <option>2002</option>
+          <option>2001</option>
+        </select>
+      </label>
+      <label for="sort">
+        Дата виходу :
+        <select (change)="sortByParams($event.target)" id="sort">
+          <option [value]="['asc','release_date']">Спочатку нові</option>
+          <option [value]="['desc','release_date']">Спочатку старі</option>
+        </select>
+      </label>
+      <label for="popularity">
+        Популярність :
+        <select (change)="sortByParams($event.target)" id="popularity">
+          <option [value]="['asc','popularity']">В тренді</option>
+          <option [value]="['desc','popularity']">Не в тренді</option>
+        </select>
+      </label>
+      <label for="vote">
+        Рейтинг :
+        <select (change)="sortByParams($event.target)" id="vote">
+          <option [value]="['asc','vote_average']">Найвищий</option>
+          <option [value]="['desc','vote_average']">Найнижчий</option>
+        </select>
+      </label>
+      <label for="createAt">
+        Дата додавання :
+        <select (change)="sortByParams($event.target)" id="createAt">
+          <option [value]="['asc','createdAt']">Недавно</option>
+          <option [value]="['desc','createdAt']">Давно</option>
+        </select>
+      </label>
     </div>
     <input (input)="searchMovie($event.target)" placeholder="Пошук...." type="search">
+  </div>
+  <div class="filter-options">
+    <span *ngIf="query.genre">{{query.genre }} <img (click)="removeQuery(query.genre)" class="remove-icon"
+                                                    [src]="removeIcon" alt="remove"></span>
+    <span *ngIf="query.year">{{query.year}} <img (click)="removeQuery(query.year)" class="remove-icon"
+                                                 [src]="removeIcon" alt="remove"></span>
+    <span *ngIf="query.order">Сортування <img class="remove-icon" (click)="removeQuery(query.order)" [src]="removeIcon"
+                                              alt="remove"></span>
   </div>
   <div *ngIf="movies.length>0" class="list_wrapper">
     <app-item *ngFor="let i of movies" [item]="i"></app-item>
