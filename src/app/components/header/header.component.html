@@ -8,7 +8,7 @@
     <li routerLink="">фільми</li>
     <li routerLink="login">премєри</li>
     <li>серіали</li>
-    <li>мультфільми</li>
+    <li routerLink="cartoons">мультфільми</li>
   </ul>
   <div class="auth">
     <div class="account" *ngIf="this.authService.isAuthenticated()&&this.roleService.setRole('admin')"

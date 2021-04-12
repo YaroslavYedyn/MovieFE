@@ -22,6 +22,8 @@ export class RoleGuardService implements CanActivate {
 
     console.log(tokenData);
 
+    console.log(tokenData);
+
     // @ts-ignore
     const {role} = tokenData;
     console.log(expectedRole);

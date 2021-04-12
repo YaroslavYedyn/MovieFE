@@ -2,7 +2,7 @@
   <p class="title">Всі Фільми</p>
   <div class="filter">
     <div>
-      <label for="genre">Жанр :
+      <label class="filter-label" for="genre">Жанр :
         <select (change)="handleGenreSearch($event.target)" name="genre" id="genre">
           <option id="vsi" disabled>Всі жанри</option>
           <option value="Бойовик">Бойовик</option>
@@ -25,7 +25,7 @@
           <option value="Вестерн">Вестерн</option>
         </select>
       </label>
-      <label for="year">Рік :
+      <label class="filter-label" for="year">Рік :
         <select (change)="handleYearSearch($event.target)" name="year" id="year">
           <option>2021</option>
           <option>2020</option>
@@ -49,28 +49,28 @@
           <option>2001</option>
         </select>
       </label>
-      <label for="sort">
+      <label class="filter-label" for="sort">
         Дата виходу :
         <select (change)="sortByParams($event.target)" id="sort">
           <option [value]="['asc','release_date']">Спочатку нові</option>
           <option [value]="['desc','release_date']">Спочатку старі</option>
         </select>
       </label>
-      <label for="popularity">
+      <label class="filter-label" for="popularity">
         Популярність :
         <select (change)="sortByParams($event.target)" id="popularity">
           <option [value]="['asc','popularity']">В тренді</option>
           <option [value]="['desc','popularity']">Не в тренді</option>
         </select>
       </label>
-      <label for="vote">
+      <label class="filter-label" for="vote">
         Рейтинг :
         <select (change)="sortByParams($event.target)" id="vote">
           <option [value]="['asc','vote_average']">Найвищий</option>
           <option [value]="['desc','vote_average']">Найнижчий</option>
         </select>
       </label>
-      <label for="createAt">
+      <label class="filter-label" for="createAt">
         Дата додавання :
         <select (change)="sortByParams($event.target)" id="createAt">
           <option [value]="['asc','createdAt']">Недавно</option>

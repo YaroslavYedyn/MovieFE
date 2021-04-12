@@ -2,11 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {IUser} from '../../../../models';
 import {UserService} from '../../../../services';
-import {IRegister} from '../../../../models/IRegister';
+import {IRegister} from '../../../../models';
 
-// import errorMessage from '../../../../constants/error.messages';
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +17,8 @@ export class AuthComponent implements OnInit {
   res: any;
   error: string;
   username = new FormControl('', [Validators.required]);
-  password = new FormControl('', [Validators.required]);
+  password = new FormControl('', [Validators.required, Validators.minLength(8)]);
+  repeatPassword = new FormControl('', [Validators.required, Validators.minLength(8)]);
   email = new FormControl('', [Validators.required]);
   form = new FormGroup({
     username: this.username,

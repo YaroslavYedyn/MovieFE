@@ -11,9 +11,11 @@ import {AdminComponent} from './components/admin/admin.component';
 import {AccountComponent} from './components/account/account.component';
 import {ProfileComponent} from './components/account/components/profile/profile.component';
 import {WishlistComponent} from './components/account/components/wishlist/wishlist.component';
+import {CartoonsComponent} from './components/cartoons/cartoons.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'cartoons', component: CartoonsComponent},
   {path: 'auth', loadChildren: () => import('./components/auth/auth.module').then((m) => m.AuthModule)},
   {
     path: 'details/:id',

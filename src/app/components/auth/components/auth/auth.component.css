@@ -51,6 +51,10 @@
   border: none;
 }
 
+.button_auth:disabled {
+  opacity: 0.5;
+}
+
 .sub-title a {
   color: #f8104d;
 }
