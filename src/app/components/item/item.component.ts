@@ -21,7 +21,6 @@ export class ItemComponent implements OnInit {
   details(id): void {
     localStorage.setItem('id', JSON.stringify(id));
     this.router.navigate([`details/${id}`], {
-      relativeTo: this.activatedRoute,
       state: id
     });
   }

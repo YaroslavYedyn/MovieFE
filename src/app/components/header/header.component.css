@@ -31,6 +31,8 @@ header {
 }
 
 .text {
+  cursor: pointer;
+  outline: none;
   font-size: 48px;
   font-weight: 700;
   color: white;
@@ -53,6 +55,7 @@ header {
   margin-left: 10px;
   list-style-type: none;
   cursor: pointer;
+  outline: none;
 }
 
 .auth {

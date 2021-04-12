@@ -6,5 +6,5 @@ export interface IQuery {
   year?: string;
   sortBy?: string;
   order?: string;
-
+  limit?: number;
 }

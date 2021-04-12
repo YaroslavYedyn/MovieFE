@@ -34,7 +34,7 @@ import {CarouselModule} from 'ngx-bootstrap/carousel';
     AccountComponent,
     ProfileComponent,
     WishlistComponent,
-    CartoonsComponent
+    CartoonsComponent,
   ],
   imports: [
     BrowserModule,

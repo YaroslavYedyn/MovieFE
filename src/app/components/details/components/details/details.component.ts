@@ -32,7 +32,7 @@ export class DetailsComponent implements OnInit {
   heart = heart;
   heartBlack = heartBlack;
   removeIcon = removeIcon;
-  defaultAvatar=defaultAvatar
+  defaultAvatar = defaultAvatar;
   removeStatus;
 
   comment = new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(350)]);
@@ -87,6 +87,7 @@ export class DetailsComponent implements OnInit {
   addComment(): void {
     const comment = {...this.commentForm.getRawValue(), user_id: this.user._id, movie_id: this.movie._id};
     this.commentService.addComment(comment).subscribe(value => this.comments = value);
+    this.comment.setValue('');
   }
 
   removeComment(id: string): void {
