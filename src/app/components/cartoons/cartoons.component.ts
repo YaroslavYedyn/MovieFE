@@ -6,6 +6,8 @@ import {IMovie, IQuery, IResponse} from '../../models';
 import nextIcon from '../../image/next.svg';
 // @ts-ignore
 import lastIcon from '../../image/last.svg';
+// @ts-ignore
+import nextSlideIcon from '../../image/next-slide.svg';
 
 @Component({
   selector: 'app-cartoons',
@@ -17,10 +19,11 @@ export class CartoonsComponent implements OnInit {
   data: IResponse;
   baseUrlImg = 'http://localhost:5050/';
   headerBGUrl;
-  index;
+  index = 0;
   query: IQuery;
   nextIcon = nextIcon;
   lastIcon = lastIcon;
+  slideIcon = nextSlideIcon;
 
   constructor(private movieService: MovieService) {
   }
@@ -33,7 +36,6 @@ export class CartoonsComponent implements OnInit {
     this.movieService.getAllMovie(this.query).subscribe(value => {
       this.movies = value.data;
       this.data = value;
-      this.index = Math.abs(Math.ceil(Math.random() * (0 - value.data.length)));
       this.headerBGUrl = this.baseUrlImg + this.movies[this.index].backdrop_path;
     });
   }
@@ -53,5 +55,15 @@ export class CartoonsComponent implements OnInit {
   handlePage(num: number): void {
     this.query.page = +this.data.page + num;
     this.getAllMovieByParams(this.query);
+  }
+
+  slide(num): void {
+    this.index = this.index + num;
+    if (this.index === this.movies.length) {
+      this.index = 0;
+    }
+    if (this.index < 0) {
+      this.index = this.movies.length - 1;
+    }
   }
 }

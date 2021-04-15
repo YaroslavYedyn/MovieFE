@@ -1,4 +1,5 @@
 <div *ngIf="user">
+  {{user.wishlist.length}}
   <div *ngIf="user.wishlist.length!==0" class="wishlist">
     <div *ngFor="let movie of user._wishlist" class="item">
       <div class="image-wrapper">

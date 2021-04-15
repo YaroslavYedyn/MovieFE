@@ -1,23 +1,25 @@
 <div class="cartoons">
   <div class="carousel"
-       [ngStyle]="{'background-image' : 'linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)),url('+headerBGUrl+')'}">
-    {{movies[index].title}}
+       [ngStyle]="{'background-image' : 'linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)),url('+baseUrlImg + movies[this.index].backdrop_path+')'}">
+    <div class="slide_btn previous" (click)="slide(-1)"><img [src]="slideIcon" alt=""></div>
+    <p class="title"> {{movies[index].title}}</p>
+    <div class="slide_btn" (click)="slide(1)"><img [src]="slideIcon" alt=""></div>
   </div>
   <div class="cartoons-list">
     <app-item *ngFor="let movie of movies" [item]="movie"></app-item>
   </div>
   <div class="pagination">
-    <button (click)="paginationStatic(1)" [disabled]="+data.page===1" class="pagination-btn">
+    <button (click)="paginationStatic(1)" [disabled]="+data.page===1" class="pagination_btn">
       <img class="first" [src]="lastIcon" alt="next">
     </button>
-    <button [disabled]="+data.page===1" (click)="handlePage(-1)" class="pagination-btn">
+    <button [disabled]="+data.page===1" (click)="handlePage(-1)" class="pagination_btn">
       <img class="previous" [src]="nextIcon" alt="next">
     </button>
     <span>{{data.page}} з {{data.pages}}</span>
-    <button (click)="handlePage(+1)" [disabled]="data.pages===+data.page" class="pagination-btn">
+    <button (click)="handlePage(+1)" [disabled]="data.pages===+data.page" class="pagination_btn">
       <img class="next" [src]="nextIcon" alt="next">
     </button>
-    <button (click)="paginationStatic(+data.pages)" [disabled]="+data.page===data.pages" class="pagination-btn">
+    <button (click)="paginationStatic(+data.pages)" [disabled]="+data.page===data.pages" class="pagination_btn">
       <img class="last" [src]="lastIcon" alt="next">
     </button>
   </div>

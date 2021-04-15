@@ -35,6 +35,7 @@ export class AuthComponent implements OnInit {
   auth(): void {
     this.user = {username: this.username.value, password: this.password.value, email: this.email.value};
     const status = this.userService.createAccount(this.user).subscribe(value => {
+      console.log(value);
       this.router.navigate(['check'], {
         relativeTo: this.activatedRoute,
       });
